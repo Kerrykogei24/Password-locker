@@ -81,3 +81,18 @@ class Creditials:
         for creditial in cls.creditials_list:
             if (creditial.f_username == user_name):
                 return creditial
+
+    @classmethod
+    def creditials_exist(cls, user_name):
+        '''
+        Method that checks if a contact exists from the user details list.
+        Args:
+        number: Phone number to search if it exists
+        Returns :
+        Boolean: True or false depending if the user details exists
+        '''
+        for creditial in cls.creditials_list:
+            if creditial.f_username == user_name:
+                return True
+
+        return False
