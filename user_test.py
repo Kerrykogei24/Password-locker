@@ -8,13 +8,14 @@ class TestClass(unittest.TestCase):
         """
         a method that runs before the test
         """
-        self.new_user = User("kerry","joker1234")
+        self.new_user = User('kerry1','joker1234')
 
     def test_init(self):
         """
         test case to check if the object in initialized correctly
         """
-        self.assertEqual(self.new_user.user_name,'kerry')
+      
+        self.assertEqual(self.new_user.user_name,'kerry1')
         self.assertEqual(self.new_user.password,'joker1234')
 
     def test_save_user(self):
@@ -34,7 +35,7 @@ class TestCreditials(unittest.TestCase):
         '''
         Method that runs before each individual credentials test methods run.
         '''
-        self.new_creditials = Creditials('kerry','joker1234')
+        self.new_creditials = Creditials('kerry','kerry1','joker1234')
 
     def tearDown(self):
         '''
@@ -47,9 +48,9 @@ class TestCreditials(unittest.TestCase):
         Test case to check if a new Credentials instance has been initialized correctly
         """
         
-       
-        self.assertEqual(self.new_creditials.f_username,'kerry')
-        self.assertEqual(self.new_creditials.f_password,'joker1234') 
+        self.assertEqual(self.new_creditials.account,'kerry')
+        self.assertEqual(self.new_creditials.username,'kerry1')
+        self.assertEqual(self.new_creditials.password,'joker1234') 
 
     def test_save_credentials(self):
         """
@@ -64,7 +65,7 @@ class TestCreditials(unittest.TestCase):
         test to check if we can save multiple credentials objects to our credentials list
         '''
         self.new_creditials.save_user_creditials()
-        test_creditial = Creditials("kerry","joker1234")
+        test_creditial = Creditials('kerry','kerry1','joker1234')
         test_creditial.save_user_creditials()
         self.assertEqual(len(Creditials.creditials_list),2)
 
@@ -74,18 +75,18 @@ class TestCreditials(unittest.TestCase):
         """
         
         self.new_creditials.save_user_creditials()
-        test_creditial = Creditials("kerry","joker123")
+        test_creditial = Creditials('kerry','kerry1','joker1234')
         test_creditial.save_user_creditials()
 
         the_creditial = Creditials.find_by_number("kerry")
-        self.assertEqual(the_creditial.f_username,test_creditial.f_username)
+        self.assertEqual(the_creditial.account,test_creditial.account)
 
     def test_creditial_exist(self):
         """
         test to check if we can return a true or false based on whether we find or can't find the credential.
         """
         self.new_creditials.save_user_creditials()
-        test_creditial = Creditials("kerry","joker1234")
+        test_creditial = Creditials('kerry','kerry1','joker1234')
         test_creditial.save_user_creditials()
         
         found_credential = Creditials.creditials_exist("kerry")
@@ -96,12 +97,12 @@ class TestCreditials(unittest.TestCase):
         test method to test if we can remove an account credentials from our credentials_list
         """
         self.new_creditials.save_user_creditials()
-        test_creditial = Creditials("kerry","joker1234")
+        test_creditial = Creditials('kerry','kerry1','joker1234')
         test_creditial.save_user_creditials()
         
         
         self.new_creditials.delete_creditials()
         self.assertEqual(len(Creditials.creditials_list),1)
-        
+
 if __name__ == '__main__':
         unittest.main()

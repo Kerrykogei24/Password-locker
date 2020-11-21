@@ -10,8 +10,8 @@ class User:
 
     user_list = []
 
-    def __init__(self,user_name,password):
-        self.user_name = user_name
+    def __init__(self,username,password):
+        self.user_name = username
         self.password  = password
 
     def save_user(self):
@@ -39,18 +39,19 @@ class Creditials:
 
     creditials_list = []
 
-    def __init__(self,f_username,f_password):
+    def __init__(self,account,username,password):
 
-        self.f_password = f_password
-        self.f_username  = f_username
+        self.account = account
+        self.password = password
+        self.username  = username
 
     @classmethod
-    def verify_user(cls,user_name,password):
-        entered_default = ""
+    def verify_user(cls,username,password):
+        a_user = ""
         for user in User.user_list:
-            if(user.user_name  == user_name  and user.password == password):
-                entered_default == user.user_name 
-        return  entered_default
+            if(user.username == username and user.password == password):
+                a_user == user.username
+        return a_user
 
     def save_user_creditials(self):
         
@@ -68,7 +69,7 @@ class Creditials:
         Creditials.creditials_list.remove(self) 
 
     @classmethod
-    def find_by_number(cls,user_name):
+    def find_by_number(cls,account):
         '''
         Method that takes in a password and returns a password that matches that number.
 
@@ -79,11 +80,11 @@ class Creditials:
         '''
 
         for creditial in cls.creditials_list:
-            if (creditial.f_username == user_name):
+            if (creditial.account == account):
                 return creditial
 
     @classmethod
-    def creditials_exist(cls, user_name):
+    def creditials_exist(cls,account):
         '''
         Method that checks if a contact exists from the user details list.
         Args:
@@ -92,7 +93,7 @@ class Creditials:
         Boolean: True or false depending if the user details exists
         '''
         for creditial in cls.creditials_list:
-            if creditial.f_username == user_name:
+            if creditial.account == account:
                 return True
 
         return False

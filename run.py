@@ -2,11 +2,11 @@
 from user import User,Creditials
 
 
-def create_new_user(user_name,password):
+def create_new_user(username,password):
     '''
     function that creates a user using a password and username
     '''
-    new_user = User(user_name,password) 
+    new_user = User(username,password) 
     return new_user
 def save_user(user):
     '''
@@ -20,30 +20,36 @@ def display_user(user):
     '''
     return User.display_user()
 
-def login_user(password,user_name):
+def login_user(password,username):
     '''
     a fumction that checks if the users already exist 
     '''
-    checked_user = Creditials.verify_user(password,user_name)
+    checked_user = Creditials.verify_user(password,username)
     return checked_user
 
-def create_new_credential(f_username,f_password):
+def create_new_credential(account,username,password):
     '''
     function that create new credential details for a new user
     '''
-    new_credential = Creditials(f_username,f_password)
+    new_credential = Creditials(account,username,password)
     return new_credential
+
+def save_creditials(credentials):
+    '''
+    function that addes a new credential to the credential
+    '''
+    credentials.save_user_creditials()
 
 def delete_credentials(credentials):
     '''
     function that deletes credentials from the credential list
     '''
     credentials.delete_creditials()
-def find_credential(user_name):
+def find_credential(account):
     """
     Function that finds a Credentials by an account name and returns the Credentials that belong to that account
     """
-    return Creditials.find_by_number(user_name)
+    return Creditials.find_by_number(account)
 
 def check_credentials(account):
     '''
@@ -58,101 +64,101 @@ def generate_password(self):
     auto_password = Creditials.generate_password(self)
     return auto_password
 
-def kerry():
-
+def main():
+    print("Hello Welcome to PasswordLocker...\n To procced enter any of the following...\n CA ---  To put up a new Account  \n HA --- Already have An Account  \n")
+    short_code = input("").lower().strip()
+    if short_code == 'ca':
+        print("Sign Up")
+        print('*' * 50)
+        username = input("User_name")
+        password = ""
+        while True:
+            print(" TP - Type your own pasword?..\n GP - Generate from our random Password")
+            pass_choice = input().lower().strip()
+            if pass_choice == 'tp':
+                print("\n")
+                password = input("Enter Password\n")
+                break
+            elif pass_choice == 'gp':
+                password = generate_password(password)
+                break
+            else:
+                print("Invalid password")
+        save_user(create_new_user(username,password))
+        print("*"*80)
+        print(f"Hello {username}, Your account has been created succesfully! Your password is: {password}")
+        print("*"*80) 
+    elif short_code == "ha":
+        print("*"*50)
+        print("Enter your User name and your Password to log in:")
+        print('*' * 50)
+        username = input("User name: ")
+        password = input("password: ")
+        login = login_user(username,password)
+        if login_user == login:
+            print(f"Hello {username} welcome to PasswordLocker" )
+            print("\n")
     while True:
-        print("Welcome to the password locker")
-        print('\n')
-        print("Please select a short code to navigate through: if you are a new user use 'nw': to login into your account use 'lg' or 'fp' for find cridential 'ex' to exit ")
-        short_code = input().lower()
-        print('\n')
-
-        if short_code == 'nw':
-            print("please create username")
-            created_user_name = input()
-
-            print("create password")
-            created_user_password = input()
-
-            print("Please confirm your password")
-            confirm_password = input()
-
-            while confirm_password != created_user_password:
-                print("Missmatch password")
-                print("please enter your password")
-                created_user_password = input()
-
-                print("confirm password")
-                confirm_password = input()
-
-            else:
-                print(f"Congratulations {created_user_name}!! account created succesfully")
-                print('\n')
-                print("Procced to login")
-                print("enter your username")
-                entered_username = input()
-
-                print("enter your password")
-                entered_password = input()
-
-            while entered_username != created_user_name or entered_password != created_user_password:
-                print("Invalid Password or Usernmae")
-                print("please username")
-                entered_username = input()
-                
-                print("enter your password")
-                entered_password = input()
-
-            else:
-                print(f"Hello {entered_username}, Welcome to your account")  
-                print('\n')  
-
-        elif short_code == 'lg':
-            print("Hello, Welcome back again") 
-            print("Please enter your username") 
-            default_user_name = input ()
-
-            print("Enter password")
-            default_password = input()
-
-            print('\n')
-
-            while default_user_name != "kerry" or default_password != "joker1234":
-                print("Wrong user name or Password. hint username kerry")
-                print("Enter username")
-                default_user_name = input()
-
-                print("Enter your password")
-                default_password = input()
-                print('\n')
-
-            else:
-                print(f"Hello {default_user_name}, login success")   
-                print('\n')
-                print('\n')  
-       
-     
- 
-        elif short_code == 'fp':
-
-                            
-                print("Enter the number you want to search for")
-
-                search_number = input()
-                if check_existing_contacts(search_number):
-                    search_contact = find_user(search_number)
-                    print(f"{search_contact.password}")
-                    print('-' * 20)
-
-                    print(f"Username.......{search_contact.f_username}")
-                    print(f"password.......{search_contact.f_password}")
+        print("To proceed select any:\n CC - Create a new credential  \n FC - Find a credential \n GP - Generate a randomn password \n D - Delete credential \n EX - Exit the application \n")    
+        short_code = input().lower().strip()
+        if short_code == "cc":
+            print("Create New Credentials")
+            print("."*20)
+            print("Account name ....")
+            account = input().lower()
+            print("Your Account username")
+            username = input()
+            while True:
+                print(" TP - Type your own pasword if you already have an account:\n GP - Generate a random Password")
+                password_Choice = input().lower().strip()
+                if password_Choice == 'tp':
+                    password = input("Enter Your Own Password\n")
+                    break
+                elif password_Choice == 'gp':
+                    password = generate_password(password)
+                    break
                 else:
-                    print("That password does not exist")
+                    print("Invalid password please try again")
+            save_creditials(create_new_credential(account,username,password))
+            print('\n')
+            print(f"Account Credential for:Account {account} :Username: {username} - Password:{password} created succesfully")
+            print('\n')
+        elif short_code == "fc":
+            print("Enter the Account Name you want to search for")
+            search_name = input().lower()
+            if find_credential(search_name):
+                search_credential = find_credential(search_name)
+                print(f"Name : {search_credential.username}")
+                print('-' * 50)
+                print(f"User Name: {search_credential.username} Password :{search_credential.password}")
+                print('-' * 50)
+            else:
+                print("That Credential does not exist")
+                print('\n')
+        elif short_code == "d":
+            print("Enter account name of the Credentials you want to delete")
+            search_name = input().lower()
+            if find_credential(search_name):
+                search_credential = find_credential(search_name)
+                print("_"*50)
+                search_credential.delete_creditials()
+                print('\n')
+                print(f"Your stored credentials for : {search_credential.account} successfully deleted!!!")
+                print('\n')
+            else:
+                print("The Credential you want to delete does not exist")
 
+        elif short_code == 'gp':
+
+            password = generate_password(password)
+            print(f" {password} Successful. You use it now.")
         elif short_code == 'ex':
+            print("Thanks for using PasswordLocker.. See you next time!")
             break
         else:
-            print("Please enter valid code to continue. eg lg to login")       
+            print("Wrong entry... Check your entry again")
+    else:
+        print("Please enter a valid input to continue")
 
-if __name__ == "__main__":
-    kerry()
+if __name__ == '__main__':
+    main()
