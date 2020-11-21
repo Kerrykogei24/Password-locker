@@ -33,3 +33,13 @@ class User:
     @classmethod   
     def display_user(cls):
         return cls.user_list
+
+class Creditials:
+
+
+    creditials_list = []
+
+    def __init__(self,f_username,f_password):
+
+        self.f_password = f_password
+        self.f_username  = f_username
