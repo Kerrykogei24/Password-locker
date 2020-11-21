@@ -51,3 +51,11 @@ class Creditials:
             if(user.user_name  == user_name  and user.password == password):
                 entered_default == user.user_name 
         return  entered_default
+
+    def save_user_creditials(self):
+        
+        """
+        save_user_creditials method saves a new user object to creditials list
+        """
+
+        Creditials.creditials_list.append(self)
