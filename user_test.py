@@ -36,5 +36,12 @@ class TestCreditials(unittest.TestCase):
         '''
         self.new_creditials = Creditials('kerry','joker1234')
 
+    def tearDown(self):
+        '''
+        method that does clean up after each test case has run.
+        '''
+        Creditials.creditials_list = []
+
+
 if __name__ == '__main__':
         unittest.main()
