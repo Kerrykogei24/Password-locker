@@ -41,7 +41,7 @@ class TestCreditials(unittest.TestCase):
         method that does clean up after each test case has run.
         '''
         Creditials.creditials_list = []
-        
+
     def test_details(self):
         """
         Test case to check if a new Credentials instance has been initialized correctly
@@ -50,6 +50,23 @@ class TestCreditials(unittest.TestCase):
        
         self.assertEqual(self.new_creditials.f_username,'kerry')
         self.assertEqual(self.new_creditials.f_password,'joker1234') 
+
+    def test_save_credentials(self):
+        """
+        test case to test if the crential object is saved into the credentials list.
+
+        """
+        self.new_creditials.save_user_creditials()
+        self.assertEqual(len(Creditials.creditials_list),1)
+
+    def test_save_many_account(self):
+        '''
+        test to check if we can save multiple credentials objects to our credentials list
+        '''
+        self.new_creditials.save_user_creditials()
+        test_creditial = Creditials("kerry","joker1234")
+        test_creditial.save_user_creditials()
+        self.assertEqual(len(Creditials.creditials_list),2)
 
 if __name__ == '__main__':
         unittest.main()
