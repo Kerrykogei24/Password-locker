@@ -65,12 +65,14 @@ def generate_password(self):
     return auto_password
 
 def main():
-    print("Hello Welcome to PasswordLocker...\n To procced enter any of the following...\n CA ---  To put up a new Account  \n HA --- Already have An Account  \n")
+    print("Hello Welcome to PasswordLocker...\n To procced enter any of the following...\n nw ---  To put up a new Account  \n lg --- Already have An Account  \n")
     short_code = input("").lower().strip()
-    if short_code == 'ca':
+    if short_code == 'nw':
         print("Sign Up")
         print('*' * 50)
-        username = input("User_name")
+        print("Username")
+        username = input()
+        print("password")
         password = ""
         while True:
             print(" TP - Type your own pasword?..\n GP - Generate from our random Password")
@@ -88,7 +90,7 @@ def main():
         print("*"*80)
         print(f"Hello {username}, Your account has been created succesfully! Your password is: {password}")
         print("*"*80) 
-    elif short_code == "ha":
+    elif short_code == "lg":
         print("*"*50)
         print("Enter your User name and your Password to log in:")
         print('*' * 50)
