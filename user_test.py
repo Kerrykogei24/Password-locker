@@ -41,7 +41,15 @@ class TestCreditials(unittest.TestCase):
         method that does clean up after each test case has run.
         '''
         Creditials.creditials_list = []
-
+        
+    def test_details(self):
+        """
+        Test case to check if a new Credentials instance has been initialized correctly
+        """
+        
+       
+        self.assertEqual(self.new_creditials.f_username,'kerry')
+        self.assertEqual(self.new_creditials.f_password,'joker1234') 
 
 if __name__ == '__main__':
         unittest.main()
