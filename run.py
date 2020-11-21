@@ -33,3 +33,27 @@ def create_new_credential(f_username,f_password):
     '''
     new_credential = Creditials(f_username,f_password)
     return new_credential
+
+def delete_credentials(credentials):
+    '''
+    function that deletes credentials from the credential list
+    '''
+    credentials.delete_creditials()
+def find_credential(user_name):
+    """
+    Function that finds a Credentials by an account name and returns the Credentials that belong to that account
+    """
+    return Creditials.find_by_number(user_name)
+
+def check_credentials(account):
+    '''
+    function that checks if the credentials of the searched name exist and return true or falsd
+    '''
+    return Creditials.creditials_exist(account)
+
+def generate_password(self):
+    ''' 
+    function tht generates password randomely
+    '''
+    auto_password = Creditials.generate_password(self)
+    return auto_password
