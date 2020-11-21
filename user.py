@@ -59,3 +59,10 @@ class Creditials:
         """
 
         Creditials.creditials_list.append(self)
+
+    def delete_creditials(self):
+        '''
+        delete_contact method deletes a saved contact from the contact_list
+        '''
+
+        Creditials.creditials_list.remove(self) 
