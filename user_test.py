@@ -79,7 +79,7 @@ class TestCreditials(unittest.TestCase):
 
         the_creditial = Creditials.find_by_number("kerry")
         self.assertEqual(the_creditial.f_username,test_creditial.f_username)
-        
+
     def test_creditial_exist(self):
         """
         test to check if we can return a true or false based on whether we find or can't find the credential.
@@ -90,5 +90,18 @@ class TestCreditials(unittest.TestCase):
         
         found_credential = Creditials.creditials_exist("kerry")
         self.assertTrue(found_credential)
+
+    def test_delete_credential(self):
+        """
+        test method to test if we can remove an account credentials from our credentials_list
+        """
+        self.new_creditials.save_user_creditials()
+        test_creditial = Creditials("kerry","joker1234")
+        test_creditial.save_user_creditials()
+        
+        
+        self.new_creditials.delete_creditials()
+        self.assertEqual(len(Creditials.creditials_list),1)
+        
 if __name__ == '__main__':
         unittest.main()
