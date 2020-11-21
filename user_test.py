@@ -68,5 +68,14 @@ class TestCreditials(unittest.TestCase):
         test_creditial.save_user_creditials()
         self.assertEqual(len(Creditials.creditials_list),2)
 
+    def test_find_creditial(self):
+        """
+        test to check if we can find a credential entry by account name and display the details of the credential
+        """
+        
+        self.new_creditials.save_user_creditials()
+        test_creditial = Creditials("kerry","joker123")
+        test_creditial.save_user_creditials()
+
 if __name__ == '__main__':
         unittest.main()
