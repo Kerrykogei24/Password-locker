@@ -96,3 +96,11 @@ class Creditials:
                 return True
 
         return False
+
+    def generate_password(self):
+
+        """
+        generate a random password consisting of letters
+        """
+        password = string.ascii_uppercase + string.ascii_lowercase + "havertz"
+        return ''.join(random.choice(password) for i in range(1,9))
