@@ -62,7 +62,22 @@ class Creditials:
 
     def delete_creditials(self):
         '''
-        delete_contact method deletes a saved contact from the contact_list
+        delete_credentials method deletes a saved creditials list
         '''
 
         Creditials.creditials_list.remove(self) 
+
+    @classmethod
+    def find_by_number(cls,user_name):
+        '''
+        Method that takes in a password and returns a password that matches that number.
+
+        Args:
+        number: password number to search for
+        Returns :
+        password of person that matches the number.
+        '''
+
+        for creditial in cls.creditials_list:
+            if (creditial.f_username == user_name):
+                return creditial
