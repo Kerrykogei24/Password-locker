@@ -57,3 +57,102 @@ def generate_password(self):
     '''
     auto_password = Creditials.generate_password(self)
     return auto_password
+
+def kerry():
+
+    while True:
+        print("Welcome to the password locker")
+        print('\n')
+        print("Please select a short code to navigate through: if you are a new user use 'nw': to login into your account use 'lg' or 'fp' for find cridential 'ex' to exit ")
+        short_code = input().lower()
+        print('\n')
+
+        if short_code == 'nw':
+            print("please create username")
+            created_user_name = input()
+
+            print("create password")
+            created_user_password = input()
+
+            print("Please confirm your password")
+            confirm_password = input()
+
+            while confirm_password != created_user_password:
+                print("Missmatch password")
+                print("please enter your password")
+                created_user_password = input()
+
+                print("confirm password")
+                confirm_password = input()
+
+            else:
+                print(f"Congratulations {created_user_name}!! account created succesfully")
+                print('\n')
+                print("Procced to login")
+                print("enter your username")
+                entered_username = input()
+
+                print("enter your password")
+                entered_password = input()
+
+            while entered_username != created_user_name or entered_password != created_user_password:
+                print("Invalid Password or Usernmae")
+                print("please username")
+                entered_username = input()
+                
+                print("enter your password")
+                entered_password = input()
+
+            else:
+                print(f"Hello {entered_username}, Welcome to your account")  
+                print('\n')  
+
+        elif short_code == 'lg':
+            print("Hello, Welcome back again") 
+            print("Please enter your username") 
+            default_user_name = input ()
+
+            print("Enter password")
+            default_password = input()
+
+            print('\n')
+
+            while default_user_name != "kerry" or default_password != "joker1234":
+                print("Wrong user name or Password. hint username kerry")
+                print("Enter username")
+                default_user_name = input()
+
+                print("Enter your password")
+                default_password = input()
+                print('\n')
+
+            else:
+                print(f"Hello {default_user_name}, login success")   
+                print('\n')
+                print('\n')  
+       
+     
+ 
+        elif short_code == 'fp':
+
+                            
+                print("Enter the number you want to search for")
+
+                search_number = input()
+                if check_existing_contacts(search_number):
+                    search_contact = find_user(search_number)
+                    print(f"{search_contact.password}")
+                    print('-' * 20)
+
+                    print(f"Username.......{search_contact.f_username}")
+                    print(f"password.......{search_contact.f_password}")
+                else:
+                    print("That password does not exist")
+
+        elif short_code == 'ex':
+            break
+        else:
+            print("Please enter valid code to continue. eg lg to login")       
+
+if __name__ == "__main__":
+    kerry()
