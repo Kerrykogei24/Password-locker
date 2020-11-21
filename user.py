@@ -43,3 +43,11 @@ class Creditials:
 
         self.f_password = f_password
         self.f_username  = f_username
+
+    @classmethod
+    def verify_user(cls,user_name,password):
+        entered_default = ""
+        for user in User.user_list:
+            if(user.user_name  == user_name  and user.password == password):
+                entered_default == user.user_name 
+        return  entered_default
