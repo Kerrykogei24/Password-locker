@@ -15,6 +15,7 @@ The application requires this installations to operate:
 
  ## Technologies Used 
   * python3.6
+  * Markdown
 
 ## Live link
 * https://github.com/Kerrykogei24/Password-locker
